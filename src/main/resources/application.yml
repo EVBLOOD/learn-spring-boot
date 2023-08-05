@@ -1,0 +1,4 @@
+spring:
+  application: learn
+server:
+  port: 80
