@@ -1,4 +1,15 @@
 spring:
-  application: learn
+#  application:
+#    name: learn
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learn
+    username: postgres
+    password: evblood123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 server:
   port: 80
