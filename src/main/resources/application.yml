@@ -11,5 +11,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    secret-key: ;gknfbngjbgoeibrgo[ibergotubgvn sb23j]34-9u]giq3 j
 server:
   port: 80

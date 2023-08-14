@@ -7,30 +7,26 @@ import com.spring.learn.model.UserEntity;
 import com.spring.learn.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 //@RestController(value = "/lo)
 @RestController
-
-@RequestMapping("/user")
 @RequiredArgsConstructor
 public class LoginController implements LoginControlerInter {
 
     private final UserService userServ;
 
     @Override
-    public ResponseEntity<UserEntity> LoginWithPassword(@RequestBody() UserLoginRequest ExistingUser){
+    public ResponseEntity<UserEntity> LoginWithPassword(UserLoginRequest ExistingUser){
         Optional<UserEntity> UserLog = userServ.LoginWithPassword(ExistingUser);
-        return ResponseEntity.ok(UserLog.get()) ;
+        return UserLog.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.ok(null));
     }
 
     @Override
-    public ResponseEntity<UserEntity> RegisterNewUser(@RequestBody() NewUserRequest newUser) {
+    public ResponseEntity<UserEntity> RegisterNewUser(NewUserRequest newUser) {
         UserEntity UserLog = userServ.RegisterNewUser(newUser);
-        return null;
+        return ResponseEntity.ok(UserLog);
     }
 }

@@ -1,4 +1,4 @@
-package com.spring.learn.repository;
+package com.spring.learn.daos.repositories;
 
 import com.spring.learn.model.TokenEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

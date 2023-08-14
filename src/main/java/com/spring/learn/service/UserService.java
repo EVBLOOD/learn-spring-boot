@@ -1,26 +1,30 @@
 package com.spring.learn.service;
 
+import com.spring.learn.daos.services.UserServiceDao;
+import com.spring.learn.daos.specification.UserSpecification;
 import com.spring.learn.model.UserEntity;
-import com.spring.learn.repository.UserRepository;
+import com.spring.learn.daos.repositories.UserRepository;
 import com.spring.learn.ressources.NewUserRequest;
 import com.spring.learn.ressources.Role;
 import com.spring.learn.ressources.UserLoginRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService implements com.spring.learn.service.impl.UserService {
-    UserRepository userRepo;
-    @Override
-    public UserEntity save(UserEntity UserX)
+    private final UserRepository userRepo;
+    private final UserServiceDao userServiceDao;
+    private UserEntity save(UserEntity UserX)
     {
         return userRepo.save(UserX);
     }
 
     @Override
     public Optional<UserEntity> LoginWithPassword(UserLoginRequest existingUser) { // TODO: the function should return a token!
-        // get the user by UserName first
+         // get the user by UserName first
         Optional<UserEntity> user = userRepo.findByUserName(existingUser.getUserName());
         if (user.isEmpty())
             return  null;
@@ -44,5 +48,7 @@ public class UserService implements com.spring.learn.service.impl.UserService {
         this.save(NewOne);
         return null;
     }
+
+
 
 }
