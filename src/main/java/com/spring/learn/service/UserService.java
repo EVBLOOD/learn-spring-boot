@@ -1,7 +1,6 @@
 package com.spring.learn.service;
 
 import com.spring.learn.daos.services.UserServiceDao;
-import com.spring.learn.daos.specification.UserSpecification;
 import com.spring.learn.model.UserEntity;
 import com.spring.learn.daos.repositories.UserRepository;
 import com.spring.learn.ressources.NewUserRequest;

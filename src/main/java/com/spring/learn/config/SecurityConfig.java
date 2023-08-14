@@ -1,7 +1,6 @@
 package com.spring.learn.config;
 
 import com.spring.learn.filters.JwtAuthFilter;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,11 +23,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
 
-        http.csrf((csrf) -> csrf.disable())
+        http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((auth) ->
                         auth.requestMatchers("/auth/**").permitAll()
                                 .anyRequest().authenticated())
-            .sessionManagement((session) -> session
+            .sessionManagement(session -> session
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authenticationProvider(authProvider)
                 .addFilterBefore(JwtFilter, UsernamePasswordAuthenticationFilter.class);
 

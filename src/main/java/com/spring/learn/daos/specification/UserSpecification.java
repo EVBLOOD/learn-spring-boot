@@ -1,8 +1,6 @@
 package com.spring.learn.daos.specification;
 
 import com.spring.learn.model.UserEntity;
-//import com.spring.learn.model.UserEntity_;
-
 import com.spring.learn.model.UserEntity_;
 import org.springframework.data.jpa.domain.Specification;
 
