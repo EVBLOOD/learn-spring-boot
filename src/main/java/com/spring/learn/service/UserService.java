@@ -7,7 +7,7 @@ import com.spring.learn.ressources.UserLoginRequest;
 import java.util.Optional;
 
 public interface UserService {
-    Optional<UserEntity> LoginWithPassword(UserLoginRequest existingUser);
+    String LoginWithPassword(UserLoginRequest existingUser)  throws Exception ;
 
-    UserEntity RegisterNewUser(NewUserRequest newUser);
+    String RegisterNewUser(NewUserRequest newUser)  throws Exception ;
 }

@@ -43,7 +43,8 @@ public class JwtServiceImpl implements JwtService {
     public String GenerateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return Jwts.builder().addClaims(extraClaims).setSubject(userDetails.getUsername()).
                 setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24)).signWith(getSigningKey())
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .signWith(getSigningKey())
                 .compact();
     }
 

@@ -32,11 +32,10 @@ public class ApplicationConfig {
         provider.setUserDetailsService(userDetailsService());
         return  provider;
     }
-
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception
-    {
-        return config.getAuthenticationManager();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
     @Bean
     public PasswordEncoder passwordEncoder()

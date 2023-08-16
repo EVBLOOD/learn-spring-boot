@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/auth")
 public interface LoginController {
     @PostMapping("/login")
-    ResponseEntity<UserEntity> LoginWithPassword(@RequestBody() UserLoginRequest newUser);
+    ResponseEntity<String> LoginWithPassword(@RequestBody UserLoginRequest newUser);
 
     @PostMapping("/register")
-    ResponseEntity<UserEntity> RegisterNewUser(@RequestBody() NewUserRequest newUser);
+    ResponseEntity<String> RegisterNewUser(@RequestBody NewUserRequest newUser);
 }
