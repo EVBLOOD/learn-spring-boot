@@ -1,6 +1,6 @@
 package com.spring.learn.config;
-
-import com.spring.learn.daos.repositories.UserRepository;
+import com.spring.learn.daos.services.impl.UserServiceDaoImpl;
+import com.spring.learn.daos.specification.UserSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +17,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
-    final UserRepository userRepository;
+    // final UserRepository userRepository;
+    final UserServiceDaoImpl userServiceDaoImpl;
+
     @Bean
     public UserDetailsService userDetailsService()
     {
-        return (userName) -> userRepository.findByUserName(userName)
-                .orElseThrow(() -> new UsernameNotFoundException("userNotFound"));
+        return (userName) -> new AppUserDetails( userServiceDaoImpl.justFindOne(UserSpecification.withName(userName)).
+                orElseThrow(() -> new UsernameNotFoundException("userNotFound")));
     }
     @Bean
     public AuthenticationProvider authProvider()

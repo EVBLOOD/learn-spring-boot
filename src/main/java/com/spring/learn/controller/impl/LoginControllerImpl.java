@@ -1,16 +1,11 @@
 package com.spring.learn.controller.impl;
-
 import com.spring.learn.controller.LoginController;
 import com.spring.learn.ressources.NewUserRequest;
 import com.spring.learn.ressources.UserLoginRequest;
-import com.spring.learn.model.UserEntity;
 import com.spring.learn.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
