@@ -10,8 +10,7 @@ public class ProfileControllerImpl implements ProfileController {
     @Override
     public ResponseEntity<String> myUserName()
     {
-        System.out.println("HOLO");
-        return  ResponseEntity.ok( "authed");
+        return  ResponseEntity.ok("LOLO LOLO LOLO LOLO");
     }
 
 }

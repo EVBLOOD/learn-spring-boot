@@ -54,6 +54,8 @@ public class UserServiceImpl implements UserService {
         NewOne.setUserName(newUser.getUserName());
         NewOne.setPassword(passwordEncoder.encode(newUser.getPassword()));
         NewOne.setRole(Role.User);
+        System.out.println("Role.User: ");
+        System.out.println(Role.User);
         this.userServiceDao.save(NewOne);
         return jwtService.GenerateToken(new HashMap<>(), new AppUserDetails(NewOne));
     }
