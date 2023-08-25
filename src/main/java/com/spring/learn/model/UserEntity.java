@@ -18,7 +18,7 @@ public class UserEntity {
 
     @Column(name =  "user_role")
     @Enumerated(EnumType.STRING)
-    com.spring.learn.ressources.Role Role;
+    com.spring.learn.ressources.Role rule;
 
     @Column(name= "user_locked")
     boolean Locked;

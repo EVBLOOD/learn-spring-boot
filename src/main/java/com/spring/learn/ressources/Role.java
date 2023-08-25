@@ -1,8 +1,8 @@
 package com.spring.learn.ressources;
 
-public enum Role {
-    User,
-    Admin,
 
-    Guest
+public enum Role {
+    USER,
+    ADMIN,
+    GUESTS
 }

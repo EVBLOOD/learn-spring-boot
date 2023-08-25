@@ -4,10 +4,15 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/User")
+@RequestMapping("/user")
 public interface ProfileController {
 
-    @PreAuthorize("hasAnyRole('User')")
-    @GetMapping("/MyInfos")
-    ResponseEntity<String> myUserName();
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping("/access")
+    ResponseEntity<String> IhaveAccess();
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/root")
+    ResponseEntity<String> IdontHaveIt();
 }
+// }

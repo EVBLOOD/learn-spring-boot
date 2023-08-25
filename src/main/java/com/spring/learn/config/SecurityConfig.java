@@ -1,4 +1,5 @@
 package com.spring.learn.config;
+
 import com.spring.learn.filters.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

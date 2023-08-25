@@ -6,6 +6,7 @@ import lombok.*;
 public class UserLoginRequest {
     @NonNull
     String UserName;
+
     @NonNull
     String Password;
 }
