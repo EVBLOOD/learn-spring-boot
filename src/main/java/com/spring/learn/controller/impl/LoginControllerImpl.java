@@ -15,6 +15,7 @@ public class LoginControllerImpl implements LoginController {
 
     @Override
     public ResponseEntity<String> LoginWithPassword(UserLoginRequest ExistingUser){
+
         try
         {
             String UserLog = userServ.LoginWithPassword(ExistingUser);

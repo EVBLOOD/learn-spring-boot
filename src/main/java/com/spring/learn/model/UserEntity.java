@@ -16,6 +16,9 @@ public class UserEntity {
     @Column(name =  "user_passowrd")
     String Password;
 
+    @Column(name = "user_fullname")
+    String fullName;
+
     @Column(name =  "user_role")
     @Enumerated(EnumType.STRING)
     com.spring.learn.ressources.Role rule;

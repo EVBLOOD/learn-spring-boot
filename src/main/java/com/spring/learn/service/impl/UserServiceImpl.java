@@ -3,6 +3,7 @@ import com.spring.learn.model.UserEntity;
 import com.spring.learn.config.AppUserDetails;
 import com.spring.learn.daos.services.UserServiceDao;
 import com.spring.learn.daos.specification.UserSpecification;
+import com.spring.learn.mapper.UserMapper;
 import com.spring.learn.ressources.NewUserRequest;
 import com.spring.learn.ressources.Role;
 import com.spring.learn.ressources.UserLoginRequest;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
+    private final UserMapper userMapper;
     // private final UserRepository userRepo;
     private final UserServiceDao userServiceDao;
     private final PasswordEncoder passwordEncoder;
@@ -45,16 +47,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String RegisterNewUser(NewUserRequest newUser) throws RuntimeException {
+    public String RegisterNewUser(NewUserRequest newUser)
+        throws RuntimeException {
+
         Optional<UserEntity> user = userServiceDao
         .justFindOne(UserSpecification.withName(newUser.getUserName()));
+
         if (user.isPresent())
             throw new RuntimeException("UserName Not Unique!");
-        UserEntity NewOne = new UserEntity();
-        NewOne.setUserName(newUser.getUserName());
+
+        UserEntity NewOne = userMapper.DtoRegisterToEntity(newUser);
+
         NewOne.setPassword(passwordEncoder.encode(newUser.getPassword()));
         NewOne.setRule(Role.USER);
         this.userServiceDao.save(NewOne);
+
         return jwtService.GenerateToken(new HashMap<>(), new AppUserDetails(NewOne));
     }
 }
