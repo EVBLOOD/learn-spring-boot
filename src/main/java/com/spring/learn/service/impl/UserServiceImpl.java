@@ -9,6 +9,8 @@ import com.spring.learn.ressources.Role;
 import com.spring.learn.ressources.UserLoginRequest;
 import com.spring.learn.service.UserService;
 import lombok.RequiredArgsConstructor;
+// import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Optional;
 
-
+// @Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -26,13 +28,17 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final JwtServiceImpl jwtService;
     private final AuthenticationManager authenticationManager;
+    // private final Logger logger = 
 
     // private UserEntity save(UserEntity UserX) {
     //     return userServiceDao.save(UserX);
     // }
-
+    
     @Override
     public String LoginWithPassword(UserLoginRequest existingUser) throws RuntimeException {
+        // log.info("info");
+        // log.error("error");
+        // log.warn("warn");
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         existingUser.getUserName(),
