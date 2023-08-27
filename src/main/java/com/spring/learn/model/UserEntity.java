@@ -1,7 +1,11 @@
 package com.spring.learn.model;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
 import jakarta.persistence.*;
 import lombok.*;
 
+@Audited
 @Entity
 @Table(name = "b_user")
 @Data
@@ -27,6 +31,7 @@ public class UserEntity {
     boolean Locked;
 
     @OneToOne(mappedBy = "user")
+    @NotAudited
     TokenEntity token;
 
 }
